@@ -10,15 +10,10 @@ pipeline {
 		}
 		stage('Test') {
 			steps {
-				sh 'false'
+				echo 'Testing application...'
 			}
 		}
 		stage('Deploy') {
-			when {
-				expression {
-					currentBuild.result == null || currentBuild.result == 'SUCCESS'
-				}
-			}
 			steps {
 				echo 'Deploying application...'
 			}
