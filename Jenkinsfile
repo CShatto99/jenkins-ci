@@ -5,22 +5,12 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo 'Building application...'
+				echo 'Building application on dev branch...'
 			}
 		}
 		stage('Test') {
 			steps {
-				sh 'false'
-			}
-		}
-		stage('Deploy') {
-			when {
-				expression {
-					currentBuild.result == null || currentBuild.result == 'SUCCESS'
-				}
-			}
-			steps {
-				echo 'Deploying application...'
+				echo 'Testing application on dev branch...'
 			}
 		}
 	}
