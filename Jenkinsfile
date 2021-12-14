@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
 	agent any
 	stages {
@@ -8,10 +10,15 @@ pipeline {
 		}
 		stage('Test') {
 			steps {
-				echo 'Testing application...'
+				sh 'false'
 			}
 		}
 		stage('Deploy') {
+			when {
+				expression {
+					currentBuild.result == null || currentBuild.result == 'SUCCESS'
+				}
+			}
 			steps {
 				echo 'Deploying application...'
 			}
